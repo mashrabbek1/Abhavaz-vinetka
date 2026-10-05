@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhavaz — Bitiruvchilar vinetkasi</title>
+    <style>
+      :root {
+        --bg: #0d0d0d;
+        --bg-soft: #171717;
+        --panel: #1b1b1b;
+        --panel-2: #202020;
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #f3f3f3;
+        --muted: #b8b8b8;
+        --light: #ffffff;
+        --shadow: rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #0b0b0b 0%, #131313 100%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(12, 12, 12, 0.72);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        background: #121212;
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.04);
+      }
+
+      .brand-mark span {
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-btn {
+        border: 1px solid var(--line);
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: #f2f2f2;
+        color: #0d0d0d;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        padding: 72px 0 56px;
+      }
+
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        letter-spacing: 0.08em;
+        font-size: 0.7rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        background: rgba(255,255,255,0.01);
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 5vw, 5rem);
+        line-height: 1.02;
+        margin: 18px 0 18px;
+        letter-spacing: -0.05em;
+      }
+
+      .lead {
+        max-width: 610px;
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+
+      .primary-btn, .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        border-radius: 12px;
+        padding: 0 22px;
+        font-weight: 700;
+        border: 1px solid var(--line);
+        transition: 0.2s ease;
+      }
+
+      .primary-btn {
+        background: var(--light);
+        color: var(--bg);
+      }
+
+      .secondary-btn {
+        background: transparent;
+        color: var(--text);
+      }
+
+      .primary-btn:hover, .secondary-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        color: var(--muted);
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--text);
+        font-size: 1.8rem;
+        margin-bottom: 4px;
+      }
+
+      .hero-panel {
+        background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: 0 30px 80px var(--shadow);
+      }
+
+      .panel-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 14px;
+        margin-bottom: 18px;
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        box-shadow: 0 0 0 6px rgba(255,255,255,0.06);
+        display: inline-block;
+      }
+
+      .ticket-card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.02);
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .ticket-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+      }
+
+      .ticket-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .ticket-id {
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .ticket-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .ticket-body {
+        padding: 18px 20px 20px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .ticket-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--muted);
+      }
+
+      .ticket-row strong {
+        color: var(--text);
+      }
+
+      .mini-tag {
+        display: inline-flex;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      main {
+        padding: 18px 0 70px;
+      }
+
+      .section {
+        margin-top: 66px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+        margin-bottom: 18px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .price-card {
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      }
+
+      .price-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.06);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+      }
+
+      .price-label {
+        color: var(--muted);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+      }
+
+      .price-card h3 {
+        margin: 12px 0 18px;
+        font-size: 1.35rem;
+      }
+
+      .price-description {
+        margin: -10px 0 18px;
+        color: var(--muted);
+      }
+
+      .price-options {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .price-options li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        color: var(--muted);
+      }
+
+      .price-options strong {
+        color: var(--text);
+        white-space: nowrap;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .feature {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 26px 22px;
+        transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.05);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+      }
+
+      .feature-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        background: #121212;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+
+      .feature h3 {
+        margin: 0 0 10px;
+        font-size: 1.25rem;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .service-details {
+        margin-top: 24px;
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .service-details:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+      }
+
+      .service-details h3 {
+        margin: 0 0 18px;
+        font-size: 1.35rem;
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px 24px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .details-grid li {
+        position: relative;
+        padding-left: 24px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .details-grid li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .minimum-note {
+        margin: 22px 0 0;
+        padding: 14px 16px;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 12px;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .instagram-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .instagram-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 22px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.03);
+        transition: 0.2s ease;
+      }
+
+      .instagram-link:hover {
+        background: rgba(255,255,255,0.08);
+        transform: translateY(-2px);
+      }
+
+      .instagram-link span {
+        color: var(--muted);
+      }
+
+      .instagram-link strong {
+        font-size: 1.05rem;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 26px 0 48px;
+        color: var(--muted);
+      }
+
+      .footer-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap,
+        .price-grid,
+        .features,
+        .details-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          gap: 14px;
+          font-size: 0.85rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .instagram-links {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          gap: 14px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        h1 {
+          letter-spacing: -0.04em;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#" class="brand" aria-label="Abhavaz bitiruvchilar vinetkasi bosh sahifa">
+          <span class="brand-mark"><span>AB</span></span>
+          <span>Abhavaz</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Asosiy navigatsiya">
+          <a href="bizning-ishlar.html">Vinetka foto suratlar</a>
+          <a href="trend-videolar.html">Trend videolar</a>
+          <a href="oquvchilar-uchun-yengillik.html">O'quvchilar uchun yengillik</a>
+          <a href="#services">Xizmatlar</a>
+          <a href="#prices">Narxlar</a>
+          <a href="#contact">Bog'lanish</a>
+        </nav>
+
+        <a href="#contact" class="nav-btn">Instagramda yozish</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <span class="eyebrow">Vinetka va ijodiy videolar</span>
+          <h1>Eng go'zal lahzalarni esdalikka aylantiring.</h1>
+          <p class="lead">
+            Men Abhavaz — bog'cha va maktab bitiruvchilari, 1-sinf Alifbe bayrami
+            hamda 4-sinf o'quvchilari uchun vinetkalar tayyorlayman. Shuningdek,
+            Instagram trend videolari va kelin-kuyovlar uchun ajratilgan foto
+            zonada fotosuratlar hamda videolar olaman.
+          </p>
+
+          <div class="cta-row">
+            <a href="#services" class="primary-btn">Xizmatlarni ko'rish</a>
+            <a href="#contact" class="secondary-btn">Instagram sahifalarim</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>Sinf</strong>
+              <span>uchun maxsus</span>
+            </div>
+            <div class="stat">
+              <strong>Bog'cha + maktab</strong>
+              <span>Alifbe, 4-, 9- va 11-sinflar</span>
+            </div>
+            <div class="stat">
+              <strong>Xotira</strong>
+              <span>bir umrga</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-top">
+            <span>Bitiruv vinetkasi</span>
+            <span><span class="status-dot"></span> Esdalik uchun</span>
+          </div>
+
+          <div class="ticket-card" aria-label="Bitiruv vinetkasi namunasi">
+            <div class="ticket-header">
+              <div>
+                <div class="ticket-id">Bog'cha va maktab o'quvchilari</div>
+                <div class="ticket-value">Vinetka albomi</div>
+              </div>
+              <span class="mini-tag">Sinf xotirasi</span>
+            </div>
+
+            <div class="ticket-body">
+              <div class="ticket-row">
+                <span>O'quvchilar</span>
+                <strong>Sinfingiz bilan</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Maktab</span>
+                <strong>Ma'lumotlaringiz asosida</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Dizayn</span>
+                <strong>Kelishuv asosida</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Vinetka albomi narxi</span>
+                <strong>160 000 so'mdan boshlanadi</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div class="container">
+        <section class="section" id="prices">
+          <div class="section-header">
+            <h2>Bekobod vinetka narxlari</h2>
+            <p>O'zingizga mos vinetka turini tanlang.</p>
+          </div>
+
+          <div class="price-grid">
+            <article class="price-card">
+              <span class="price-label">01 / TREND</span>
+              <h3>Hozirgi trenddagi vinetka</h3>
+              <p class="price-description">Fotozona studiyasi xizmati narx ichida — bepul.</p>
+              <ul class="price-options">
+                <li><span>4 bet</span><strong>160 000 so'm</strong></li>
+                <li><span>6 bet</span><strong>190 000 so'm</strong></li>
+                <li><span>8 bet</span><strong>220 000 so'm</strong></li>
+                <li><span>10 bet</span><strong>250 000 so'm</strong></li>
+              </ul>
+            </article>
+
+            <article class="price-card">
+              <span class="price-label">02 / OYNALI</span>
+              <h3>Usti oynali vinetka</h3>
+              <ul class="price-options">
+                <li><span>6 bet</span><strong>240 000 so'm</strong></li>
+                <li><span>8 bet</span><strong>270 000 so'm</strong></li>
+                <li><span>10 bet</span><strong>300 000 so'm</strong></li>
+              </ul>
+            </article>
+
+            <article class="price-card">
+              <span class="price-label">03 / PANORAMA</span>
+              <h3>Panorama oynali</h3>
+              <p class="price-description">Qora piton ko'jali</p>
+              <ul class="price-options">
+                <li><span>6 bet</span><strong>250 000 so'm</strong></li>
+                <li><span>8 bet</span><strong>280 000 so'm</strong></li>
+                <li><span>10 bet</span><strong>300 000 so'm</strong></li>
+              </ul>
+            </article>
+
+            <article class="price-card">
+              <span class="price-label">04 / TWIX</span>
+              <h3>Twix ikki tomonli</h3>
+              <ul class="price-options">
+                <li><span>8 bet</span><strong>300 000 so'm</strong></li>
+                <li><span>10 bet</span><strong>340 000 so'm</strong></li>
+                <li><span>12 bet</span><strong>380 000 so'm</strong></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="services">
+          <div class="section-header">
+            <h2>Xizmatlarim</h2>
+            <p>Bayramingiz va xotiralaringiz uchun ijodiy xizmatlar.</p>
+          </div>
+
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon">✦</div>
+              <h3>Vinetka va Alifbe albomlari</h3>
+              <p>Bog'cha bitiruvchilari, 1-sinf Alifbe bayrami, 4-sinf hamda maktab bitiruvchilari uchun esdalik vinetkalar tayyorlayman.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">▶</div>
+              <h3>Instagram trend videolar</h3>
+              <p>Instagram sahifangiz uchun ommabop trendlar asosida qiziqarli videolar yarataman.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature-icon">📸</div>
+              <h3>Kelin-kuyovlar uchun foto zona</h3>
+              <p>Kelin-kuyovlar uchun ajratilgan fotozonada fotosuratlar va trend videolar olaman. Bu xizmat vinetka narxiga kiradi.</p>
+            </article>
+          </div>
+
+          <div class="service-details">
+            <h3>Vinetka xizmatining tarkibi va shartlari</h3>
+            <ul class="details-grid">
+              <li>Suratga olishni professional jamoa amalga oshiradi.</li>
+              <li>Har bir o'quvchi alohida professional kadrda suratga olinadi.</li>
+              <li>Suratlar sinf xonasida, maktab hovlisida va fotozonada olinadi.</li>
+              <li>Yuqori sifatli albomlar va kreativ, zamonaviy dizayn.</li>
+              <li>Kelin-kuyovlar ajratilgan fotozonada suratga olinadi; bu kadr vinetka narxiga kiritilgan.</li>
+              <li>Mobilograf tomonidan Instagram uchun trend videolar tayyorlanadi.</li>
+              <li>Bekoboddagi fotostudiya xizmati vinetka narxiga kiradi.</li>
+              <li>Barcha rasmlar elektron shaklda Telegram orqali yuboriladi.</li>
+              <li>Sinf o'qituvchisiga 1 dona vinetka albomi bepul beriladi.</li>
+              <li>O'qituvchilar uchun alohida shartlar mavjud.</li>
+            </ul>
+            <p class="minimum-note"><strong>Minimal buyurtma:</strong> vinetka uchun kamida 20 nafar o'quvchi buyurtma qilishi shart. 20 nafardan kam bo'lsa, buyurtma qabul qilinmaydi.</p>
+          </div>
+        </section>
+
+        <section class="section" id="contact">
+          <div class="section-header">
+            <h2>Instagram orqali murojaat qiling</h2>
+            <p>Vinetka, trend video va foto zona haqida sahifalarimdan yozing.</p>
+          </div>
+
+          <div class="instagram-links">
+            <a class="instagram-link" href="https://instagram.com/abhavaz" target="_blank" rel="noopener noreferrer">
+              <span>Asosiy sahifa</span>
+              <strong>@abhavaz ↗</strong>
+            </a>
+            <a class="instagram-link" href="https://instagram.com/vinetka_bekobod" target="_blank" rel="noopener noreferrer">
+              <span>Vinetka sahifasi</span>
+              <strong>@vinetka_bekobod ↗</strong>
+            </a>
+            <a class="instagram-link" href="tel:+998901140596">
+              <span>Telefon orqali bog'lanish</span>
+              <strong>+998 90 114 05 96 ↗</strong>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <div>© 2026 Abhavaz. Barcha huquqlar himoyalangan.</div>
+        <div>Kelin-kuyovlarning fotozonadagi kadri vinetka narxiga kiradi.</div>
+      </div>
+    </footer>
+  </body>
+</html>
