@@ -1,0 +1,14 @@
+GitHub Pages sayti uchun yangilash
+
+1. GitHub'dagi Abhavaz-vinetka repozitoriyasini oching.
+2. Add file > Upload files ni tanlang.
+3. Shu papkadagi 5 ta HTML faylni va ogil-16.jpg ni repo asosiy joyiga yuklang.
+4. Commit changes tugmasini bosing.
+
+Muhim: fayllarni yana ichki papkaga joylamang. Hozirgi rasmlar va dastlabki
+4 ta video repo asosiy joyida turgani uchun HTML havolalari shu tartibga moslandi.
+
+Oxirgi 2 ta video GitHub repo ichida yo'q. Beshinchi video 100 MB dan katta;
+GitHub oddiy fayl sifatida qabul qilmaydi. Oltinchi video ham yuklanmagan.
+Ularni YouTube (ro'yxatda ko'rsatilmagan) yoki boshqa video hostingga joylab,
+havolalarini alohida qo'shish kerak.

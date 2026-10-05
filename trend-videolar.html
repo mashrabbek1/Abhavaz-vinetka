@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uz">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0d0d0d" />
-    <title>Trend videolar — Abhavaz</title>
+    <title>Trend videolar вЂ” Abhavaz</title>
     <style>
       :root {
         color-scheme: dark;
@@ -141,7 +141,15 @@
       }
 
       @media (max-width: 480px) {
+        .nav {
+          flex-wrap: wrap;
+          padding: 10px 0;
+        }
+
         .page-links {
+          width: 100%;
+          flex-wrap: wrap;
+          justify-content: flex-start;
           gap: 6px;
         }
 
@@ -182,37 +190,25 @@
       <section class="video-gallery" aria-label="Trend videolar">
         <article class="video-card">
           <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-1.mp4" type="video/mp4">
+            <source src="trend-video-1.mp4" type="video/mp4">
             Brauzeringiz video formatini qo'llab-quvvatlamaydi.
           </video>
         </article>
         <article class="video-card">
           <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-2.mp4" type="video/mp4">
+            <source src="trend-video-2.mp4" type="video/mp4">
             Brauzeringiz video formatini qo'llab-quvvatlamaydi.
           </video>
         </article>
         <article class="video-card">
           <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-3.mp4" type="video/mp4">
+            <source src="trend-video-3.mp4" type="video/mp4">
             Brauzeringiz video formatini qo'llab-quvvatlamaydi.
           </video>
         </article>
         <article class="video-card">
           <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-4.mp4" type="video/mp4">
-            Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-          </video>
-        </article>
-        <article class="video-card">
-          <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-5.mp4" type="video/mp4">
-            Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-          </video>
-        </article>
-        <article class="video-card">
-          <video controls playsinline preload="metadata">
-            <source src="trend-videolar/trend-video-6.mp4" type="video/mp4">
+            <source src="trend-video-4.mp4" type="video/mp4">
             Brauzeringiz video formatini qo'llab-quvvatlamaydi.
           </video>
         </article>
@@ -220,3 +216,4 @@
     </main>
   </body>
 </html>
+
