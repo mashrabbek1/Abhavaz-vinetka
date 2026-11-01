@@ -201,7 +201,7 @@
         }
       }
     </style>
-<style>.work-item video{width:100%;display:block;aspect-ratio:9/16;max-height:640px;background:#050505;object-fit:contain}</style></head>
+<style>.work-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:start;gap:24px}.work-item video{width:100%;display:block;height:auto;aspect-ratio:auto;max-height:none;background:#050505;object-fit:contain}@media(max-width:800px){.work-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}@media(max-width:480px){.work-gallery{grid-template-columns:1fr}}</style></head>
   <body>
     <header>
       <div class="container nav">
